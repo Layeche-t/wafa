@@ -1,0 +1,284 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+
+	<!-- Start section for slider -->
+	{# <div class="banner-carousel banner-carousel-1 mb-5">
+																			{% for ad in ads %}
+																				<div class="banner-carousel-item" style="background-image:url({{ad.coverImage}})">
+																					<div class="slider-content">
+																						<div class="container h-100">
+																							<div class="row align-items-center h-100">
+																								<div class="col-md-12 text-center">
+																									<h2 class="slide-title" data-animation-in="slideInLeft">17 Years of excellence in</h2>
+																									<h3 class="slide-sub-title" data-animation-in="slideInRight">Construction Industry</h3>
+																									<p data-animation-in="slideInLeft" data-duration-in="1.2">
+																										<a href="services.html" class="slider btn btn-primary">Our Services</a>
+																										<a href="contact.html" class="slider btn btn-primary border">Contact Now</a>
+																									</p>
+																								</div>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			{% endfor %}
+																		</div> #}
+
+	<!-- Start section for cards -->
+		<section class="d-flex justify-content-between mt-5 "> <div class="container">
+			<div class="row text-center">
+				<div class="col-12">
+					<h2 class="section-title">Découvrir</h2>
+					<h3 class="section-sub-title">Nos produits</h3>
+				</div>
+			</div>
+			<div class="d-flex flex-row justify-content-between ">
+				{% for ad in ads %}
+					<div class="card" style="width: 20rem;">
+						<img src="{{ad.coverImage}}" class="card-img-top" alt="...">
+						<div class="card-body d-flex flex-column justify-content-center">
+							<h5 class="card-title text-center">{{ad.title}}</h5>
+							<div class="d-flex flex-row justify-content-between mb-3  ">
+								<div class="  ">
+									<strong>{{ad.price}}&euro;</strong>
+								</div>
+								<div class=" ">
+									<strong>250g</strong>
+								</div>
+							</div>
+
+							<a href="#" class="btn btn-primary text-center">Ajouter au panier</a>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+			<div class="general-btn d-flex justify-content-center ">
+				<a class="btn btn-primary" href="#">Voir plus</a>
+			</div>
+		</div>
+	</section>
+	<!-- Start section for services -->
+	<section id="ts-service-area" class="ts-service-area pb-0">
+		<div class="container">
+			<div class="row text-center">
+				<div class="col-12">
+					<h2 class="section-title">Nos spécialités</h2>
+					<h3 class="section-sub-title">Ce que nous faisons</h3>
+				</div>
+			</div>
+			<!--/ Title row end -->
+
+			<div class="row">
+				<div class="col-lg-4">
+					<div class="ts-service-box d-flex">
+						<div class="ts-service-box-img"></div>
+						<div class="ts-service-box-info">
+							<h3 class="service-box-title">
+								<a href="#">Importation de nos produits</a>
+							</h3>
+							<p>Lorem ipsum dolor sit amet consectetur adipiscing elit Integer adipiscing erat</p>
+						</div>
+					</div>
+					<!-- Service 1 end -->
+
+					<div class="ts-service-box d-flex">
+
+						<div class="ts-service-box-info">
+
+							<h3 class="service-box-title">
+								<a href="#">fabrication à l'usine
+								</a>
+							</h3>
+							<p>Lorem ipsum dolor sit amet consectetur adipiscing elit Integer adipiscing erat</p>
+						</div>
+					</div>
+					<!-- Service 2 end -->
+
+					<div class="ts-service-box d-flex">
+
+						<div class="ts-service-box-info">
+							<h3 class="service-box-title">
+								<a href="#">Le mélange</a>
+							</h3>
+							<p>Lorem ipsum dolor sit amet consectetur adipiscing elit Integer adipiscing erat</p>
+						</div>
+					</div>
+					<!-- Service 3 end -->
+
+				</div>
+				<!-- Col end -->
+
+				<div class="col-lg-4 text-center">
+					<img loading="lazy" class="img-fluid" src="images/services/service-center.jpg" alt="service-avater-image">
+				</div>
+				<!-- Col end -->
+
+				<div class="col-lg-4 mt-5 mt-lg-0 mb-4 mb-lg-0">
+					<div class="ts-service-box d-flex">
+						<div class="ts-service-box-info">
+							<h3 class="service-box-title">
+								<a href="#">Emballage</a>
+							</h3>
+							<p>Lorem ipsum dolor sit amet consectetur adipiscing elit Integer adipiscing erat</p>
+						</div>
+					</div>
+					<!-- Service 4 end -->
+
+					<div class="ts-service-box d-flex">
+						<div class="ts-service-box-info">
+							<h3 class="service-box-title">
+								<a href="#">Stockage</a>
+							</h3>
+							<p>Lorem ipsum dolor sit amet consectetur adipiscing elit Integer adipiscing erat</p>
+						</div>
+					</div>
+					<!-- Service 5 end -->
+
+					<div class="ts-service-box d-flex">
+						<div class="ts-service-box-info">
+							<h3 class="service-box-title">
+								<a href="#">Vente et livraison</a>
+							</h3>
+							<p>Lorem ipsum dolor sit amet consectetur adipiscing elit Integer adipiscing erat</p>
+						</div>
+					</div>
+					<!-- Service 6 end -->
+				</div>
+				<!-- Col end -->
+			</div>
+			<!-- Content row end -->
+
+		</div>
+		<!--/ Container end -->
+	</section>
+	<!-- Service end -->
+
+	<!-- Start realization -->
+	<section id="facts" class="facts-area dark-bg">
+		<div class="container">
+			<div class="facts-wrapper">
+				<div class="row">
+					<div class="col-md-3 col-sm-6 ts-facts">
+						<div class="ts-facts-img">
+							<h1 class="text-danger">
+								<i class="bi bi-gift"></i>
+							</h1>
+						</div>
+						<div class="ts-facts-content">
+							<h2 class="ts-facts-num">
+								<span class="counterUp" data-count="1789">0</span>
+							</h2>
+							<h3 class="ts-facts-title">Produits</h3>
+						</div>
+					</div>
+					<!-- Col end -->
+
+					<div class="col-md-3 col-sm-6 ts-facts mt-5 mt-sm-0">
+						<div class="ts-facts-img">
+							<h1 class="text-danger">
+								<i class="bi bi-people"></i>
+							</h1>
+						</div>
+						<div class="ts-facts-content">
+							<h2 class="ts-facts-num">
+								<span class="counterUp" data-count="647">0</span>
+							</h2>
+							<h3 class="ts-facts-title">Membres d'équipe</h3>
+						</div>
+					</div>
+					<!-- Col end -->
+
+					<div class="col-md-3 col-sm-6 ts-facts mt-5 mt-md-0">
+						<div class="ts-facts-img">
+							<h1 class="text-danger">
+								<i class="bi bi-truck"></i>
+							</h1>
+						</div>
+						<div class="ts-facts-content">
+							<h2 class="ts-facts-num">
+								<span class="counterUp" data-count="4000">0</span>
+							</h2>
+							<h3 class="ts-facts-title">Livrisons</h3>
+						</div>
+					</div>
+					<!-- Col end -->
+
+					<div class="col-md-3 col-sm-6 ts-facts mt-5 mt-md-0">
+						<div class="ts-facts-img">
+							<h1 class="text-danger">
+								<i class="bi bi-person-check"></i>
+							</h1>
+						</div>
+						<div class="ts-facts-content">
+							<h2 class="ts-facts-num">
+								<span class="counterUp" data-count="44">0</span>
+							</h2>
+							<h3 class="ts-facts-title">Clients</h3>
+						</div>
+					</div>
+					<!-- Col end -->
+
+				</div>
+				<!-- Facts end -->
+			</div>
+			<!--/ Content row end -->
+		</div>
+		<!--/ Container end -->
+	</section>
+	<!-- Facts end -->
+
+
+	<!-- Start new products -->
+	<div class="container"></div>
+
+	<section id="news" class="news border">
+		<div class="container">
+			<div class="row text-center">
+				<div class="col-12">
+					<h2 class="section-title">Découvrir</h2>
+					<h3 class="section-sub-title">Nouveaux produits</h3>
+				</div>
+			</div>
+			<!--/ Title row end -->
+
+			<div class="row border mb-0">
+				{% for ad in ads %}
+					<div class="col-lg-4 col-md-6">
+						<div class="latest-post">
+
+							<div class="latest-post-media">
+								<a href="news-single.html" class="latest-post-img">
+									<img loading="lazy" class="img-fluid" src="{{ad.coverImage}}" alt="img">
+								</a>
+							</div>
+
+							<div class="post-body">
+								<h4 class="post-title">
+									<a href="news-single.html" class="d-inline-block">{{ad.introduction}}</a>
+								</h4>
+								<div class="latest-post-meta">
+									<span class="post-item-date">
+										<i class="fa fa-clock-o"></i>
+										July 20, 2017
+									</span>
+								</div>
+							</div>
+						</div>
+						<!-- Latest post end -->
+					</div>
+				{% endfor %}
+
+
+				<!-- 1st post col end -->
+
+			</div>
+			<div class="general-btn border d-flex justify-content-center ">
+				<a class="btn btn-primary" href="news-left-sidebar.html">Voir plus</a>
+			</div>
+			<!--/ Container end -->
+		</section>
+		<!--/ News end -->
+
+
+	{% endblock %}
