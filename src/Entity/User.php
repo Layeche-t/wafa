@@ -45,10 +45,7 @@ class User implements UserInterface
      */
     private $hash;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $passwordConfirm;
+
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -137,18 +134,6 @@ class User implements UserInterface
     public function setHash(string $hash): self
     {
         $this->hash = $hash;
-
-        return $this;
-    }
-
-    public function getPasswordConfirm(): ?string
-    {
-        return $this->passwordConfirm;
-    }
-
-    public function setPasswordConfirm(string $passwordConfirm): self
-    {
-        $this->passwordConfirm = $passwordConfirm;
 
         return $this;
     }
