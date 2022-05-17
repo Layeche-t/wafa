@@ -61,10 +61,20 @@ class AccountController extends AbstractController
             $hash = $encoder->encodePassword($user, $user->getHash());
             $user->setHash($hash);
 
-
             $manager->persist($user);
             $manager->flush();
+
+            $this->addFlash(
+                'success',
+                "Votre compte a bien été créé ! Vous pouvez maintenant vous connecter !"
+            );
+
+            return $this->redirectToRoute('account_login');
         }
+
+
+
+
 
         return $this->render('account/registration.html.twig', [
             'form' => $form->createView()
