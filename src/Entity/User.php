@@ -4,12 +4,17 @@ namespace App\Entity;
 
 use Cocur\Slugify\Slugify;
 use Doctrine\ORM\Mapping as ORM;
-use App\Repository\UserRepository;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @ORM\HasLifecycleCallbacks
+ * @UniqueEntity(
+ * fields={"email"}
+ * message="Un autre utilisateur s'est déja inscrit avec cette adresse email, merci de la modifier
+ *)
  */
 class User implements UserInterface
 {
@@ -22,21 +27,25 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(massage="Vous devez rensigner votre nom")
      */
     private $lastname;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Email(massage="Veuillez rensigner un message valide")
      */
     private $email;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Url(message="Indiquez une url valide")
      */
     private $picteur;
 
