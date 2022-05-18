@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Form\AccountType;
 use App\Form\RegistrationType;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\ORM\EntityManagerInterface;
@@ -79,5 +80,51 @@ class AccountController extends AbstractController
         return $this->render('account/registration.html.twig', [
             'form' => $form->createView()
         ]);
+    }
+
+
+    /**
+     * Display of the profile modification form
+     * 
+     * @Route("/account/profile", name="account_profile")
+     * 
+     * @return Response
+     */
+    public function profile(Request $request, EntityManagerInterface $manager)
+    {
+
+        $user = new User();
+
+        $user = $this->getUser();
+        $form = $this->createForm(AccountType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $manager->persist($user);
+            $manager->flush();
+
+            $this->addFlash(
+                'success',
+                "Les donnée du profil ont bien été enregistrée avec succès"
+            );
+        }
+
+
+
+
+        return $this->render('account/profile.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * Edit a password 
+     * 
+     * @Route("account/password", name="")
+     * 
+     * @return Response
+     */
+    public function updatePassword()
+    {
     }
 }
