@@ -4,17 +4,17 @@ namespace App\Entity;
 
 use Cocur\Slugify\Slugify;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\User\UserInterface;
+use App\Repository\UserRepository;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @ORM\HasLifecycleCallbacks
  * @UniqueEntity(
- * fields={"email"}
- * message="Un autre utilisateur s'est déja inscrit avec cette adresse email, merci de la modifier
- *)
+ * fields={"email"},
+ * message="Un autre utilisateur s'est déja inscrit avec cette adresse email, merci de la modifier")
  */
 class User implements UserInterface
 {
@@ -27,19 +27,19 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message="Vous devez rensigner votre prénom")
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(massage="Vous devez rensigner votre nom")
+     * @Assert\NotBlank(message="Vous devez rensigner votre nom")
      */
     private $lastname;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Email(massage="Veuillez rensigner un message valide")
+     * @Assert\Email(message="Veuillez rensigner un message valide")
      */
     private $email;
 
@@ -53,6 +53,12 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255)
      */
     private $hash;
+
+
+    /**
+     * @Assert\EqualTo(propertyPath="hash", message="Les deux mots de passes ne sont pas identiques")
+     */
+    public $passwordConfirm;
 
 
 
@@ -134,6 +140,8 @@ class User implements UserInterface
 
         return $this;
     }
+
+
 
     public function getHash(): ?string
     {
