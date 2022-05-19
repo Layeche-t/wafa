@@ -18,6 +18,8 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class AccountController extends AbstractController
 {
+
+
     /**
      * Function for login
      * 
@@ -126,12 +128,31 @@ class AccountController extends AbstractController
      * 
      * @return Response
      */
-    public function updatePassword()
+    public function updatePassword(Request $request, EntityManagerInterface $manager, UserPasswordEncoderInterface $encoder)
     {
 
         $passwordUpdate = new PasswordUpdate();
+        $user = new User();
 
         $form = $this->createForm(PasswordUpdateType::class, $passwordUpdate);
+        $form->handleRequest($request);
+
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            if (!password_verify($passwordUpdate->getOldPassword(), $user->getHash())) {
+                # code...
+            } else {
+                $newPassword = $passwordUpdate->getNewPassword();
+                $hash = $encoder->encodePassword($user, $newPassword);
+
+                $user->setHash($hash);
+
+                $manager->persist($user);
+                $manager->flush();
+            }
+
+            return $this->redirectToRoute('homepage');
+        }
 
 
         return $this->render('account/password.html.twig', [
